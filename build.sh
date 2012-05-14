@@ -3,7 +3,7 @@ echo "prefix is $PREFIX"
 export C_INCLUDE_PATH=${PREFIX}/include
 export CPLUS_INCLUDE_PATH=$C_INCLUDE_PATH
 export LIBRARY_PATH=${PREFIX}/lib
-export LDFLAGS=-L${PREFIX}/lib
+export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath=$prefix/lib/:$prefix/lib/memcached/"
 export LD_LIBRARY_PATH=${PREFIX}/lib/
 export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
 

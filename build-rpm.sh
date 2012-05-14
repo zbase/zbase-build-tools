@@ -6,7 +6,7 @@ export VBUCKETMIGRATOR_CID=0fdc96cafc7227d52cbf4682ba7462923b773dae
 specfile=membase-zynga.spec
 topdir=`pwd`/membase-build
 buildtmp=$topdir/BUILD
-prefix=/opt/membase
+export prefix=/opt/membase
 export PREFIX=$buildtmp/$prefix
 
 if [ -d $topdir ];then
