@@ -1,0 +1,16 @@
+Prior to building the RPM, check if the autoconf version on the machine is >= 2.60 using:
+
+autoconf --version
+
+If not, install autoconf 2.60 from the tools directory on this repo:
+
+./configure
+make
+[sudo] make install
+
+To build the RPM, run build-rpm.sh (with necessary revision changes in the first few lines):
+
+./build-rpm.sh
+
+The RPM will be created at <current_dir>/membase-build/RPMS/x86_64/
+
