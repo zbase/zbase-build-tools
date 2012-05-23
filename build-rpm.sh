@@ -1,6 +1,6 @@
 #!/bin/sh
 export MEMCACHED_CID=membase-1.7.1.1-3-g185ce38
-export EP_ENGINE_CID=1.7.2-93-gdb9b25b
+export EP_ENGINE_CID=1.7.3r-23
 export VBUCKETMIGRATOR_CID=0fdc96cafc7227d52cbf4682ba7462923b773dae
 
 specfile=membase-zynga.spec
