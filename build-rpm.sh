@@ -38,4 +38,4 @@ fi
 
 cd ..
 echo "Building rpm ..." && \
-rpmbuild --define="version $version" --define="buildpath $buildtmp" --define="_topdir $topdir" -ba SPECS/$specfile 
+rpmbuild --define="version $version" --define="buildpath $buildtmp" --define="_topdir $topdir" -ba SPECS/$specfile --buildroot $buildtmp
