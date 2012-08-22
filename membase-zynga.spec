@@ -4,7 +4,7 @@ Version:      %{?version}
 Release:      1
 License:      Zynga
 Group:        Development/Languages
-BuildRoot:    %{buildpath}
+BuildRoot:    %{?buildpath}
 
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 
