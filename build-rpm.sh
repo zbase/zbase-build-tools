@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -xe
 
 if [ ! -f "checkout" ];then
 echo "checkout file is missing";
