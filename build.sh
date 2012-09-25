@@ -58,7 +58,7 @@ popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
 echo "Building ep-engine"
-git clone git@github-ca.corp.zynga.com:membase/ep-engine.git
+git clone git@github-ca.corp.zynga.com:$EP_ENGINE_REPO/ep-engine.git
 pushd ep-engine 
 git checkout $EP_ENGINE_CID
 git clean -xfd
