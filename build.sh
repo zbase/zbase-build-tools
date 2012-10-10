@@ -45,7 +45,7 @@ popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
 echo "Building memached"
-git clone git@github-ca.corp.zynga.com:membase/memcached.git
+git clone git@github-ca.corp.zynga.com:$MEMCACHED_REPO/memcached.git
 pushd memcached
 git checkout $MEMCACHED_CID
 git clean -xfd

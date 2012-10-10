@@ -1,4 +1,5 @@
 export MEMCACHED_CID=zynga_memcached
+export MEMCACHED_REPO=membase
 export EP_ENGINE_CID=branch-17
 export EP_ENGINE_REPO=membase
 export VBUCKETMIGRATOR_CID=master
