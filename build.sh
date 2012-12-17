@@ -21,6 +21,17 @@ make install-am
 popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
+echo "Building jemalloc "
+wget --no-check-certificate http://www.canonware.com/download/jemalloc/jemalloc-3.2.0.tar.bz2
+bunzip2 jemalloc-3.2.0.tar.bz2
+tar -xvf jemalloc-3.2.0.tar
+pushd jemalloc-3.2.0
+./configure --prefix=$PREFIX
+make
+make install
+popd
+sudo /sbin/ldconfig -n $PREFIX/lib
+
 echo "Building libevent"
 wget --no-check-certificate https://github.com/downloads/libevent/libevent/libevent-2.0.16-stable.tar.gz
 tar -xvf libevent-2.0.16-stable.tar.gz
@@ -31,7 +42,7 @@ make install
 popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
-export LIBS='-ltcmalloc_minimal -levent'
+export LIBS='-ljemalloc -levent'
 echo "Linking to the newly built tcmalloc and libevent for all executables built from now on"
 
 echo "Build curl"
