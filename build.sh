@@ -21,7 +21,7 @@ make install-am
 popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
-echo "Building jemalloc "
+echo "Building jemalloc"
 wget --no-check-certificate http://www.canonware.com/download/jemalloc/jemalloc-3.2.0.tar.bz2
 bunzip2 jemalloc-3.2.0.tar.bz2
 tar -xvf jemalloc-3.2.0.tar
@@ -43,13 +43,13 @@ popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
 export LIBS='-ljemalloc -levent'
-echo "Linking to the newly built tcmalloc and libevent for all executables built from now on"
+echo "Linking to the newly built jemalloc and libevent for all executables built from now on"
 
 echo "Build curl"
 wget http://curl.haxx.se/download/curl-7.24.0.tar.gz
 tar -xvf curl-7.24.0.tar.gz
 pushd curl-7.24.0
-./configure --prefix=$PREFIX --with-check=no --enable-tcmalloc
+./configure --prefix=$PREFIX --with-check=no
 make
 make install
 popd
@@ -74,7 +74,7 @@ pushd ep-engine
 git checkout $EP_ENGINE_CID
 git clean -xfd
 ./config/autorun.sh
-./configure --prefix=$PREFIX --with-memcached=$PREFIX --enable-tcmalloc --no-create --no-recursion
+./configure --prefix=$PREFIX --with-memcached=$PREFIX --no-create --no-recursion
 ./config.status
 make
 make install
@@ -87,7 +87,7 @@ pushd vbucketmigrator
 git checkout $VBUCKETMIGRATOR_CID
 git clean -xfd
 ./config/autorun.sh
-./configure --prefix=$PREFIX --with-memcached=$PREFIX --enable-tcmalloc --with-isasl --with-sasl=no
+./configure --prefix=$PREFIX --with-memcached=$PREFIX --with-isasl --with-sasl=no
 ./config.status
 make
 make install
@@ -99,7 +99,7 @@ git clone git@github-ca.corp.zynga.com:membase/libmemcached.git
 pushd libmemcached 
 git clean -xfd
 ./config/autorun.sh
-./configure --prefix=$PREFIX --enable-isasl --with-libevent=$PREFIX --enable-tcmalloc --with-memcached=$PREFIX/bin/memcached
+./configure --prefix=$PREFIX --enable-isasl --with-libevent=$PREFIX --with-memcached=$PREFIX/bin/memcached
 ./config.status
 make
 make install
