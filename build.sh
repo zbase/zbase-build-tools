@@ -87,7 +87,7 @@ pushd vbucketmigrator
 git checkout $VBUCKETMIGRATOR_CID
 git clean -xfd
 ./config/autorun.sh
-LIBS="" ./configure --prefix=$PREFIX --with-memcached=$PREFIX --with-isasl --with-sasl=no
+LIBS="" ./configure --prefix=$PREFIX --with-memcached=$PREFIX --with-sasl=no --disable-sasl
 ./config.status
 make
 make install
