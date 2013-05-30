@@ -29,7 +29,7 @@ fi
 cd $topdir/SOURCES
 if [ -f ../../build.sh ];then
 cp ../../build.sh .
-sh build.sh
+./build.sh
 version=`sed -n "s/#define PACKAGE_VERSION \"\(.*\)\"/\1/p" ep-engine/config.h` 
 else
 echo "No build script...so exiting";
