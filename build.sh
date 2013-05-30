@@ -82,7 +82,7 @@ popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
 echo "Building vbucketmigrator"
-git clone git@github-ca.corp.zynga.com:membase/vbucketmigrator.git
+git clone git@github-ca.corp.zynga.com:$VBUCKETMIGRATOR_REPO/vbucketmigrator.git
 pushd vbucketmigrator 
 git checkout $VBUCKETMIGRATOR_CID
 git clean -xfd

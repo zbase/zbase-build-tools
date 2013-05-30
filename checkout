@@ -2,4 +2,5 @@ export MEMCACHED_CID=zynga_memcached
 export MEMCACHED_REPO=vashah
 export EP_ENGINE_CID=lru_multi_kvstore
 export EP_ENGINE_REPO=vashah
+export VBUCKETMIGRATOR_REPO=membase
 export VBUCKETMIGRATOR_CID=master
