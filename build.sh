@@ -1,9 +1,41 @@
-#!/bin/bash -xe
+#!/bin/bash -e
+
+#   Copyright 2013 Zynga inc.
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+if [ -z $PREFIX ];
+then
+    if [ -z "$1" ];
+    then
+        echo "Usage: $0 prefix_path"
+        echo
+        exit 1
+    else
+        PREFIX=$1
+    fi
+fi
+
+if [ ! -f "checkout" ];then
+    echo "checkout file is missing";
+exit 1;
+fi
+
+source checkout;
 echo "prefix is $PREFIX"
 export C_INCLUDE_PATH=${PREFIX}/include
 export CPLUS_INCLUDE_PATH=$C_INCLUDE_PATH
 export LIBRARY_PATH=${PREFIX}/lib
-export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath=$prefix/lib/:$prefix/lib/memcached/"
 export LD_LIBRARY_PATH=${PREFIX}/lib/
 export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
 
@@ -56,7 +88,7 @@ popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
 echo "Building memached"
-git clone git@github-ca.corp.zynga.com:$MEMCACHED_REPO/memcached.git
+git clone $MEMCACHED_REPO
 pushd memcached
 git checkout $MEMCACHED_CID
 git clean -xfd
@@ -69,8 +101,8 @@ popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
 echo "Building ep-engine"
-git clone git@github-ca.corp.zynga.com:$EP_ENGINE_REPO/ep-engine.git
-pushd ep-engine 
+git clone $EP_ENGINE_REPO
+pushd ep-engine
 git checkout $EP_ENGINE_CID
 git clean -xfd
 ./config/autorun.sh
@@ -82,8 +114,8 @@ popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
 echo "Building vbucketmigrator"
-git clone git@github-ca.corp.zynga.com:$VBUCKETMIGRATOR_REPO/vbucketmigrator.git
-pushd vbucketmigrator 
+git clone $VBUCKETMIGRATOR_REPO
+pushd vbucketmigrator
 git checkout $VBUCKETMIGRATOR_CID
 git clean -xfd
 ./config/autorun.sh
@@ -95,8 +127,9 @@ popd
 sudo /sbin/ldconfig -n $PREFIX/lib
 
 echo "Building libmemcached"
-git clone git@github-ca.corp.zynga.com:membase/libmemcached.git
-pushd libmemcached 
+git clone $LIBMEMCACHED_REPO
+git checkout $LIBMEMCACHED_CID
+pushd libmemcached
 git clean -xfd
 ./config/autorun.sh
 ./configure --prefix=$PREFIX --enable-isasl --with-libevent=$PREFIX --with-memcached=$PREFIX/bin/memcached
