@@ -1,7 +1,7 @@
 {
     "kvstores" : {
         "kvstore1" : {
-            "dbname" : "/tmp/"
+            "dbname" : "/tmp/kv.db"
         }
     }
 }
