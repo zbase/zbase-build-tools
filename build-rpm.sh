@@ -29,6 +29,7 @@ mkdir -p $topdir/{SRPMS,RPMS,BUILD,SOURCES,SPECS}
 
 if [ -f $specfile ];then
     cp $specfile $topdir/SPECS
+    specfile="$topdir/SPECS/$specfile"
 else
     echo "No spec file...so exiting"
     exit 1
@@ -45,6 +46,11 @@ else
     exit 1;
 fi
 
-cd ..
+cd ../../
+cp scripts/kvstoreconfig.json $PREFIX/
+cp scripts/vbucketmigrator.sh $PREFIX/bin/
+mkdir -p $buildtmp/etc/init.d/
+cp -r scripts/init.d/* $buildtmp/etc/init.d/
+
 echo "Building rpm ..." && \
-rpmbuild --define="version $version" --define="buildpath $buildtmp" --define="_topdir $topdir" -ba SPECS/$specfile --buildroot $buildtmp
+rpmbuild --define="version $version" --define="buildpath $buildtmp" --define="_topdir $topdir" -ba $specfile --buildroot $buildtmp

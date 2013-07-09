@@ -1,0 +1,7 @@
+{
+    "kvstores" : {
+        "kvstore1" : {
+            "dbname" : "/tmp/"
+        }
+    }
+}
