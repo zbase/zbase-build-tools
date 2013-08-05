@@ -4,8 +4,10 @@ zbase-build-tools
 Scripts to build ZBase from source
 
 #### Dependencies
+ * CentOS 6 (We have tested on CentOS 6.2)
  * Autoconf >= 2.6
  * Boost-devel >= 1.41
+
 
 #### How to build ?
 

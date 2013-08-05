@@ -1,0 +1,9 @@
+export MEMCACHED_REPO=git://github.com/zbase/memcached.git
+export EP_ENGINE_REPO=git://github.com/zbase/ep-engine.git
+export VBUCKETMIGRATOR_REPO=git://github.com/zbase/vbucketmigrator.git
+export LIBMEMCACHED_REPO=git://github.com/zbase/libmemcached.git
+
+export MEMCACHED_CID=master
+export EP_ENGINE_CID=master
+export LIBMEMCACHED_CID=master
+export VBUCKETMIGRATOR_CID=master
