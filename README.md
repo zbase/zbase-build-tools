@@ -4,9 +4,12 @@ zbase-build-tools
 Scripts to build ZBase from source
 
 #### Dependencies
- * CentOS 6 (We have tested on CentOS 6.2)
+ * CentOS / Ubuntu (We have tested building zbase on CentOS 6.2 and Ubuntu 13.04)
  * Autoconf >= 2.6
  * Boost-devel >= 1.41
+ * Automake >= 1.9.6
+ * Libtool >= 1.5.22
+ 
 
 
 #### How to build ?
